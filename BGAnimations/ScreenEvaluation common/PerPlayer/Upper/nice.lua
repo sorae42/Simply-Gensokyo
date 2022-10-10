@@ -69,23 +69,6 @@ local IsNice = function()
 	return false
 end
 
-local IsCranked = function()
-	if not PREFSMAN:GetPreference("EasterEggs") then return false end
-	if failed then return false end
-	if not (tonumber(percent) <= 77.41) then return false end
-	if tonumber(percent) <= 0 then return false end
-
-	local SongOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSong()
-	local title = SongOrCourse:GetDisplayFullTitle():lower()
-	local genre = not GAMESTATE:IsCourseMode() and SongOrCourse:GetGenre():lower() or ""
-	local group = not GAMESTATE:IsCourseMode() and SongOrCourse:GetGroupName():lower() or ""
-
-	if title:match("wrench") or genre:match("dark psytrance") or group:match("cranked pastry") or group:match("scrapyard kent") then return true end
-
-	return false
-end
-
-
 if IsNice() then
 	af[#af+1] = LoadActor(THEME:GetPathG("","nice.png"))..{
 		InitCommand=function(self)
@@ -112,13 +95,5 @@ if IsNice() then
 		end
 	}
 end
-
-if IsCranked() then
-	af[#af+1] = LoadActor(THEME:GetPathS("", "wrenches.ogg"))..{
-		OnCommand=function(self) self:sleep(0.5):queuecommand("Play") end,
-		PlayCommand=function(self) self:play() end
-	}
-end
-
 
 return af

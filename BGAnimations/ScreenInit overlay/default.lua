@@ -40,13 +40,6 @@ for i=1,7 do
 		InitCommand=function(self) self:zoom(0.1):diffuse(GetHexColor(slc-i-4, true)) end,
 	}
 
-	-- only add Thonk asset if needed
-	if ThemePrefs.Get("VisualStyle")=="Thonk" then
-		arrow[#arrow+1] = LoadActor("thonk.png")..{
-			InitCommand=function(self) self:zoom(0.1):xy(6,-2) end,
-		}
-	end
-
 	af[#af+1] = arrow
 end
 

@@ -8,7 +8,7 @@ local ColorSelected = false
 local NumHeartsToDraw = IsUsingWideScreen() and 11 or 7
 
 local style = ThemePrefs.Get("VisualStyle")
-local colorTable = (style == "Touhou") and SL.Touhou.Colors or SL.DecorativeColors
+local colorTable = SL.DecorativeColors
 local factionBmt
 
 -- this handles user input
