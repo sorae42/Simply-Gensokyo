@@ -70,7 +70,7 @@ local IsNice = function()
 end
 
 if IsNice() then
-	af[#af+1] = LoadActor(THEME:GetPathG("","nice.png"))..{
+	af[#af+1] = LoadActor(THEME:GetPathG("","nya.png"))..{
 		InitCommand=function(self)
 			self:xy(70, _screen.cy-134)
 		end,

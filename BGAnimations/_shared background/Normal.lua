@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- non-RainbowMode (normal) background
+-- absolutely normal background
 
 local file = ...
 

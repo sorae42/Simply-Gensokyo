@@ -1,15 +1,7 @@
 -- This is mostly copy/pasted directly from SM5's _fallback theme with
 -- very minor modifications.
 
-local t = Def.ActorFrame{
-	InitCommand=function(self)
-		-- In case we loaded the theme with SRPG6 and had Rainbow Mode enabled, disable it.
-		if ThemePrefs.Get("VisualStyle") == "SRPG6" and ThemePrefs.Get("RainbowMode") == true then
-			ThemePrefs.Set("RainbowMode", false)
-			ThemePrefs.Save()
-		end
-	end
-}
+local t = Def.ActorFrame{}
 
 -- -----------------------------------------------------------------------
 
@@ -38,10 +30,6 @@ local function CreditsText( player )
 
 				local screenName = screen:GetName()
 				if screenName == "ScreenTitleMenu" or screenName == "ScreenTitleJoin" or screenName == "ScreenLogo" then
-					if ThemePrefs.Get("VisualStyle") == "SRPG6" then
-						textColor = color(SL.SRPG6.TextColor)
-						shadowLength = 0.4
-					end
 				elseif (screen:GetName() == "ScreenEvaluationStage") or (screen:GetName() == "ScreenEvaluationNonstop") then
 					-- ignore ShowCreditDisplay metric for ScreenEval
 					-- only show this BitmapText actor on Evaluation if the player is joined
@@ -49,11 +37,6 @@ local function CreditsText( player )
 					--        I am not human^
 					--        today, but there's always hope
 					--        I'll see tomorrow
-
-					-- dark text for RainbowMode
-					if ThemePrefs.Get("RainbowMode") then
-						textColor = Color.Black
-					end
 				end
 			end
 
@@ -172,8 +155,8 @@ t[#t+1] = LoadFont("Common Footer")..{
 		local textColor = Color.White
 		local screenName = screen:GetName()
 		if screen ~= nil and (screenName == "ScreenTitleMenu" or screenName == "ScreenTitleJoin" or screenName == "ScreenLogo") then
-			if ThemePrefs.Get("VisualStyle") == "SRPG6" then
-				textColor = color(SL.SRPG6.TextColor)
+			if ThemePrefs.Get("VisualStyle") == "Touhou" then
+				textColor = color(SL.Touhou.TextColor)
 			end
 		end
 		self:diffuse(textColor)
@@ -339,26 +322,6 @@ local NewSessionRequestProcessor = function(res, gsInfo)
 	local easter_eggs = PREFSMAN:GetPreference("EasterEggs")
 	local game = GAMESTATE:GetCurrentGame():GetName()
 	local style = ThemePrefs.Get("VisualStyle")
-	if events ~= nil and easter_eggs and game == "dance" then
-		local last_active_event = ThemePrefs.Get("LastActiveEvent")
-
-		for event in ivalues(events) do
-			if event["shortName"] == "SRPG6" then
-				-- If we're already on the SRPG6 theme, then set the last_active_event
-				-- if it's not already set to SRPG so that we don't bring up the prompt.
-				if last_active_event ~= "SRPG6" and style == "SRPG6" then
-					ThemePrefs.Set("LastActiveEvent", "SRPG6")
-					last_active_event = "SRPG6"
-				end
-			
-				if last_active_event ~= "SRPG6" then
-					local top_screen = SCREENMAN:GetTopScreen()
-					top_screen:SetNextScreenName("ScreenPromptToSetSrpgVisualStyle"):StartTransitioningScreen("SM_GoToNextScreen")
-					break
-				end
-			end
-		end
-	end
 
 	-- All services are enabled, display a green check.
 	if SL.GrooveStats.GetScores and SL.GrooveStats.Leaderboard and SL.GrooveStats.AutoSubmit then
@@ -386,11 +349,11 @@ end
 local function DiffuseText(bmt)
 	local textColor = Color.White
 	local shadowLength = 0
-	if ThemePrefs.Get("RainbowMode") and not HolidayCheer() then
+	if not HolidayCheer() then
 		textColor = Color.Black
 	end
-	if ThemePrefs.Get("VisualStyle") == "SRPG6" then
-		textColor = color(SL.SRPG6.TextColor)
+	if ThemePrefs.Get("VisualStyle") == "Touhou" then
+		textColor = color(SL.Touhou.TextColor)
 		shadowLength = 0.4
 	end
 

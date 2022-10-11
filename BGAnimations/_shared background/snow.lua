@@ -83,8 +83,6 @@ for i=1,num_particles do
 			self:x( math.random( -40, math.floor(_screen.w)+40 ) )
 			self:y( math.random( -40, math.floor(_screen.h)+40 ) )
 			self:zoomto( _t.size, _t.size )
-
-			if ThemePrefs.Get("RainbowMode") then self:effectoffset( math.random() ):rainbow() end
 		end
 	}
 end

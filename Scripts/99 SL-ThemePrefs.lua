@@ -70,8 +70,8 @@ SL_CustomPrefs.Get = function()
 		VisualStyle =
 		{
 			Default = "Touhou",
-			Choices = "☯",
-			Values  = "Touhou"
+			Choices = { "☯" },
+			Values  = { "Touhou" }
 		},
 		WriteCustomScores = {
 			Default = false,

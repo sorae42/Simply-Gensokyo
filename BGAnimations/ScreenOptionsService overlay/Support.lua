@@ -1,17 +1,8 @@
--- Simply Thonk needs render-to-texture, and render-to-texture doesn't work with SM5's D3D implementation
-local ThonkAndRTTOkay = function()
-	if ThemePrefs.Get("VisualStyle") == "Thonk" and not SupportsRenderToTexture() then
-		SM( THEME:GetString("ScreenThemeOptions", "ThonkRequiresRenderToTexture") )
-		return false
-	end
-	return true
-end
-
 local InputHandler = function(event)
 	if not event then return false end
 	if event.type == "InputEventType_FirstPress" and event.GameButton == "Back" then
-		 if ThonkAndRTTOkay() and CurrentGameIsSupported() and StepManiaVersionIsSupported() then
-			 SCREENMAN:GetTopScreen():Cancel()
+		 if CurrentGameIsSupported() and StepManiaVersionIsSupported() then
+			SCREENMAN:GetTopScreen():Cancel()
 		 end
 	end
 	return false
@@ -21,11 +12,6 @@ local a = Def.Actor{}
 
 a.OnCommand=function(self) SCREENMAN:GetTopScreen():AddInputCallback( InputHandler ) end
 a.BeginCommand=function(self)
-	-- In case we switched into SRPG6 and had Rainbow Mode enabled, disable it.
-	if ThemePrefs.Get("VisualStyle") == "SRPG6" and ThemePrefs.Get("RainbowMode") == true then
-		ThemePrefs.Set("RainbowMode", false)
-	end
-	
 	-- we might have just backed out of ScreenThemeOptions ("Simply Love Options")
 	-- in which case we'll want to call ThemePrefs.Save() now
 	ThemePrefs.Save()
@@ -48,10 +34,6 @@ end
 -- so we handle that case using a Lua InputCallback function
 a.OffCommand=function(self)
 	if SCREENMAN:GetTopScreen():AllAreOnLastRow() then
-		if not ThonkAndRTTOkay() then
-			SCREENMAN:SetNewScreen("ScreenOptionsService")
-		end
-
 		if not CurrentGameIsSupported() then
 			SM( THEME:GetString("ScreenInit", "UnsupportedGame"):format(GAMESTATE:GetCurrentGame():GetName()) )
 			SCREENMAN:SetNewScreen("ScreenSystemOptions")

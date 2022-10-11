@@ -35,35 +35,24 @@ local SharedBackground = {
 	["ScreenThemeOptions"] = true,
 }
 
-local randomBg = 1
-
-local shared_alpha = 0.6
-local static_alpha = 1
+math.randomseed(Second())
+local randomBg = math.random(1, 3)
 
 local af = Def.ActorFrame {
 	OnCommand=function(self)
-		self:accelerate(0.8):diffusealpha(1)
+		self:diffusealpha(0):accelerate(0.3):diffusealpha(1)
 	end,
-	local bg = Def.Sprite {
-		Name="Static",
-		Texture=THEME:GetPathG("", nil),
-		InitCommand=function(self)
-			self:xy(_screen.cx, _screen.cy):zoomto(_screen.w, _screen.h):diffusealpha(shared_alpha)
-		end,
-	},
 	ScreenChangedMessageCommand=function(self)
 		local screen = SCREENMAN:GetTopScreen()
 		local style = ThemePrefs.Get("VisualStyle")
-		bg.Load(string.format("Backgrounds/%s.mp4", randomBg))
 	end,
-	VisualStyleSelectedMessageCommand=function(self)
-		local style = ThemePrefs.Get("VisualStyle")
-		if style == "Touhou" then
-			self:visible(true)
-		else
-			self:visible(false)
-		end
-	end,
+	Def.Sprite {
+		Name="Static",
+		Texture=THEME:GetPathG("", string.format("Backgrounds/%s.mp4", randomBg)),
+		InitCommand=function(self)
+			self:xy(_screen.cx, _screen.cy):zoomto(_screen.w, _screen.h):diffusealpha(0.75)
+		end,
+	},
 }
 
 return af

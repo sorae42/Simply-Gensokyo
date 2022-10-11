@@ -13,7 +13,8 @@ Original SLSM5: https://github.com/Simply-Love/Simply-Love-SM5
 # Modified
 - UI and English strings are modified. Other languages are remains untouched.
 - Default to load Touhou related stuff.
-- Removed all visual style (including SRPGs themes), only retain Heart Visual Style.
+- Removed all visual style (including Heart and SRPG).
+- Removed rainbow mode.
 
 ## Work in Progress
 - Touhou look-a-like title screen.
