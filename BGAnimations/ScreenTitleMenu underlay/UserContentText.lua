@@ -1,4 +1,4 @@
-local TextColor = (ThemePrefs.Get("RainbowMode") and (not HolidayCheer()) and Color.Black) or Color.White
+local TextColor = not HolidayCheer() and Color.Black or Color.White
 
 -- generate a string like "7741 songs in 69 groups, 10 courses"
 local song_stats = ("%i %s %i %s, %i %s"):format(
@@ -61,7 +61,7 @@ return LoadFont("Common Normal")..{
 	UpdateColorCommand=function(self)
 		local textColor = Color.White
 		local shadowLength = 0
-		if ThemePrefs.Get("RainbowMode") and not HolidayCheer() then
+		if not HolidayCheer() then
 			textColor = Color.Black
 		end
 		if ThemePrefs.Get("VisualStyle") == "Touhou" then

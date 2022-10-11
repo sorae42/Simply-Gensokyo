@@ -1,4 +1,4 @@
-if not ThemePrefs.Get("RainbowMode") and ThemePrefs.Get("VisualStyle") ~= "SRPG6" then return Def.Actor{ InitCommand=function(self) self:visible(false) end } end
+if ThemePrefs.Get("VisualStyle") ~= "Touhou" then return Def.Actor{ InitCommand=function(self) self:visible(false) end } end
 
 return Def.ActorFrame{
 	Def.Quad{

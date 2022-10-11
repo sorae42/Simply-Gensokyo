@@ -15,14 +15,6 @@ if type(ThemePrefs) ~= "table" or type(ThemePrefs.Get) ~= "function" then
 end
 
 SL_CustomPrefs.Get = function()
-	 -- emojis are our lingua franca for the 21st century
-	local visualStyleChoices = { "❤", "☯" }
-	local visualStyleValues  = { "Hearts", "Touhou"}
-
-	local year = Year()
-	local month = MonthOfYear()+1
-	local day = DayOfMonth()
-	local today = year * 10000 + month * 100 + day
 
 	return {
 		AllowFailingOutOfSet =
@@ -78,26 +70,8 @@ SL_CustomPrefs.Get = function()
 		VisualStyle =
 		{
 			Default = "Touhou",
-			Choices = visualStyleChoices,
-			Values  = visualStyleValues
-		},
-		-- touhou background image
-		BackgroundImage =
-		{
-			Default = true,
-			Choices = {
-				THEME:GetString("ThemePrefs", "On"),
-				THEME:GetString("ThemePrefs", "Off")
-			},
-			Values  = { true, false }
-		},
-		RainbowMode = {
-			Default = false,
-			Choices = {
-				THEME:GetString("ThemePrefs", "On"),
-				THEME:GetString("ThemePrefs", "Off")
-			},
-			Values = { true , false }
+			Choices = "☯",
+			Values  = "Touhou"
 		},
 		WriteCustomScores = {
 			Default = false,

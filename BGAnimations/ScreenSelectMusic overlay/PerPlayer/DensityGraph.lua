@@ -43,9 +43,6 @@ local af = Def.ActorFrame{
 af[#af+1] = Def.Quad{
 	InitCommand=function(self)
 		self:diffuse(color("#1e282f")):zoomto(width, height)
-		if ThemePrefs.Get("RainbowMode") then
-			self:diffusealpha(0.9)
-		end
 	end
 }
 
@@ -114,7 +111,7 @@ af2[#af2+1] = LoadFont("Common Normal")..{
 		end
 
 		-- We want black text in Rainbow mode, white otherwise.
-		self:diffuse(ThemePrefs.Get("RainbowMode") and {0, 0, 0, 1} or {1, 1, 1, 1})
+		self:diffuse({1, 1, 1, 1})
 	end,
 	HideCommand=function(self)
 		self:settext("Peak NPS: ")

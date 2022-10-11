@@ -47,9 +47,6 @@ t[#t+1] = Def.Quad{
 	Name="Background",
 	InitCommand=function(self)
 		self:diffuse(color("#1e282f")):zoomto(32,152)
-		if ThemePrefs.Get("RainbowMode") then
-			self:diffusealpha(0.9)
-		end
 	end
 }
 
@@ -65,9 +62,6 @@ for RowNumber=-2, 2 do
 			local height = 28
 			local spacing = 2
 			self:diffuse(color("#0f0f0f")):zoomto(height, height):y((height+spacing)*RowNumber)
-			if ThemePrefs.Get("RainbowMode") then
-				self:diffusealpha(0.9)
-			end
 		end
 	}
 

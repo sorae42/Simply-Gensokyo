@@ -35,7 +35,7 @@ local SharedBackground = {
 	["ScreenThemeOptions"] = true,
 }
 
-local randomBg = 2
+local randomBg = 1
 
 local shared_alpha = 0.6
 local static_alpha = 1
@@ -44,9 +44,17 @@ local af = Def.ActorFrame {
 	OnCommand=function(self)
 		self:accelerate(0.8):diffusealpha(1)
 	end,
+	local bg = Def.Sprite {
+		Name="Static",
+		Texture=THEME:GetPathG("", nil),
+		InitCommand=function(self)
+			self:xy(_screen.cx, _screen.cy):zoomto(_screen.w, _screen.h):diffusealpha(shared_alpha)
+		end,
+	},
 	ScreenChangedMessageCommand=function(self)
 		local screen = SCREENMAN:GetTopScreen()
 		local style = ThemePrefs.Get("VisualStyle")
+		bg.Load(string.format("Backgrounds/%s.mp4", randomBg))
 	end,
 	VisualStyleSelectedMessageCommand=function(self)
 		local style = ThemePrefs.Get("VisualStyle")
@@ -56,13 +64,6 @@ local af = Def.ActorFrame {
 			self:visible(false)
 		end
 	end,
-	Def.Sprite {
-		Name="Static",
-		Texture=THEME:GetPathG("", string.format("Backgrounds/%s.mp4", randomBg)),
-		InitCommand=function(self)
-			self:xy(_screen.cx, _screen.cy):zoomto(_screen.w, _screen.h):diffusealpha(shared_alpha)
-		end,
-	},
 }
 
 return af

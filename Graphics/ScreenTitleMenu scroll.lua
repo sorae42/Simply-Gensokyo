@@ -11,7 +11,6 @@ t[#t+1] = LoadFont("Common Bold")..{
 	InitCommand=function(self) self:shadowlength(0.5) end,
 	OnCommand=function(self)
 		self:diffusealpha(0):sleep(index*0.075):linear(0.2):diffusealpha(1) 
-		
 	end,
 	OffCommand=function(self)
 		-- do some flash like in touhou menu
@@ -38,9 +37,6 @@ t[#t+1] = LoadFont("Common Bold")..{
 			self:diffuse(textColor)
 		else
 			local textColor = color("#888888")
-			if ThemePrefs.Get("RainbowMode") then
-				textColor = Color.White
-			end
 			if ThemePrefs.Get("VisualStyle") == "Touhou" then
 				textColor = color(SL.Touhou.TextColor)
 			end

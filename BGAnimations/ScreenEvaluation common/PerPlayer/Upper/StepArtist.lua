@@ -22,9 +22,6 @@ return LoadFont("Common Normal")..{
 	OnCommand=function(self)
 		local textColor = Color.White
 		local shadowLength = 0
-		if ThemePrefs.Get("RainbowMode") and not HolidayCheer() then
-			textColor = Color.Black
-		end
 		self:diffuse(textColor)
 		self:shadowlength(shadowLength)
 
