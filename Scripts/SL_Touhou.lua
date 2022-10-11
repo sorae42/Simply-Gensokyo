@@ -24,6 +24,6 @@ SL.Touhou = {
 	end,
 	
 	GetAbilityCard = function(idx)
-		return "Life Card"
+		return "Teacup Reimu"
 	end,
 }

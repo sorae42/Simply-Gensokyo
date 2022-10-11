@@ -36,7 +36,7 @@ local SharedBackground = {
 }
 
 math.randomseed(Second())
-local randomBg = math.random(1, 3)
+local randomBg = math.random(1, 4)
 
 local af = Def.ActorFrame {
 	OnCommand=function(self)

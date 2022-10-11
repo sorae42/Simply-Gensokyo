@@ -9,7 +9,7 @@ local NumHeartsToDraw = IsUsingWideScreen() and 11 or 7
 
 local style = ThemePrefs.Get("VisualStyle")
 local colorTable = SL.DecorativeColors
-local factionBmt
+local abilityCardBmt
 
 -- this handles user input
 -- need to split declaration and assignment up across two lines
@@ -48,7 +48,6 @@ input = function(event)
 	return false
 end
 
-
 -- the metatable for an item in the wheel
 local wheel_item_mt = {
 	__index = {
@@ -66,12 +65,13 @@ local wheel_item_mt = {
 					subself:diffusealpha(0)
 				end
 			}
-
-			af[#af+1] = LoadActor(THEME:GetPathG("", "_VisualStyles/"..style.."/SelectColor.png"))..{
+			
+			af[#af+1] = Def.Sprite {
+				Texture="../Graphics/_VisualStyles/"..style.."/SelectColor.png",
 				InitCommand=function(subself)
 					self.heart = subself
 					subself:diffusealpha(0)
-					subself:zoom(0.25)
+					subself:zoom(0.2)
 				end,
 				OnCommand=function(subself)
 					subself:sleep(0.2)
@@ -86,7 +86,7 @@ local wheel_item_mt = {
 
 		transform = function(self, item_index, num_items, has_focus)
 			self.container:finishtweening()
-			self.container:linear(0.2)
+			self.container:linear(0.25)
 			self.index=item_index
 
 			local X_SpaceBetweenHearts = IsUsingWideScreen() and (_screen.w / (num_items-1)) or (_screen.w / (num_items))
@@ -115,7 +115,7 @@ local wheel_item_mt = {
 				self.container:zoom( zoom )
 			end
 
-			if style == "Touhou" and has_focus then
+			if has_focus then
 				local idx = self.color_index % #colorTable + 1
 				abilityCardBmt:settext(SL.Touhou.GetAbilityCard(idx))
 			end
