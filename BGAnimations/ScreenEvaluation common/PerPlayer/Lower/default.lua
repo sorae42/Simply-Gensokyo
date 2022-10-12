@@ -40,6 +40,7 @@ af[#af+1] = Def.Quad{
 		self:diffuse(color("#1E282F")):horizalign(left)
 		self:xy(-small_pane_w * 0.5, _screen.cy+34)
 		self:zoomto( pane_width, pane_height )
+		self:diffusealpha(0.9)
 	end
 }
 

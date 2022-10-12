@@ -251,6 +251,19 @@ local Overrides = {
 		Values = { 'Off','Dark','Darker','Darkest' },
 	},
 	-------------------------------------------------------------------------
+	Dancers = {
+		LayoutType = "ShowOneInRow",
+		ExportOnChange = true,
+		Choices = function() return GetDancers() end,
+		SaveSelections = function(self, list, pn)
+			local mods = SL[ToEnumShortString(pn)].ActiveModifiers
+			for i, val in ipairs(self.Choices) do
+				if list[i] then mods.Dancers = val; break end
+			end
+			MESSAGEMAN:Broadcast("RefreshActorProxy", {Player=pn, Name="Dancers", Value=mods.Dancers})
+		end
+	},
+	-------------------------------------------------------------------------
 	Mini = {
 		Choices = function()
 			local first	= -100

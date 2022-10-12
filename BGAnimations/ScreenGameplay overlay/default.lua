@@ -20,6 +20,7 @@ local af = Def.ActorFrame{}
 
 af[#af+1] = LoadActor("./WhoIsCurrentlyWinning.lua")
 af[#af+1] = LoadActor("./FailOnHoldStart.lua")
+af[#af+1] = LoadActor("../../Dancers/Reimu/dance.lua")
 
 for player in ivalues( GAMESTATE:GetHumanPlayers() ) do
 

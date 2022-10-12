@@ -53,7 +53,7 @@ for player in ivalues(GAMESTATE:GetHumanPlayers()) do
 
 							if ThemePrefs.Get("nice")==2 and self:GetText()=="69" then
 								SOUND:DimMusic(PREFSMAN:GetPreference("SoundVolume"),  1.3)
-								SOUND:PlayOnce(THEME:GetPathS("", "nice.ogg"))
+								SOUND:PlayOnce(THEME:GetPathS("", "nya.ogg"))
 							end
 						end
 						-- call stoptweening() to prevent tween overflow that could occur from rapid input from the player

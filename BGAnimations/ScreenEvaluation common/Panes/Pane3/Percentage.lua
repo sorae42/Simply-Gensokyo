@@ -17,6 +17,7 @@ return Def.ActorFrame{
 	Def.Quad{
 		InitCommand=function(self)
 			self:diffuse( color("#101519") )
+				:diffusealpha(0.5)
 				:y(-2)
 				:zoomto(70, 28)
 		end

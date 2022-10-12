@@ -16,6 +16,7 @@ return Def.ActorFrame{
 	Def.Quad{
 		InitCommand=function(self)
 			self:diffuse(color("#101519")):zoomto(158.5, SL.Global.GameMode == "FA+" and 88 or 60)
+			self:diffusealpha(0.5)
 			self:horizalign(controller==PLAYER_1 and left or right)
 			self:x(150 * (controller == PLAYER_1 and -1 or 1))
 			if SL.Global.GameMode == "FA+" then
