@@ -15,26 +15,6 @@ timing.duration = 1
 
 local t = Def.ActorFrame{}
 
--- -----------------------------------------------------------------------
--- override if it's time to get spooky
-if IsSpooky() then
-	style = "Spooky/ExtraSpooky"
-	assets.flycenter = THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/Bats")
-	assets.flytop    = THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/Bats")
-	assets.flybottom = THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/Bats")
-
-	-- this is broadcast from ./Graphics/ScreenTitleMenu scroll.lua
-	-- when the first choice ("Gameplay") is chosen by the player
-	t.TitleMenuToGameplayMessageCommand=function(self)
-		-- change tween timing values before OffCommands evaluate them
-		timing.af_decel = 0.35
-		timing.af_accel = 1.15
-		timing.img_accel= 1.45
-		timing.duration = 2.5
-	end
-end
--- -----------------------------------------------------------------------
-
 t.OffCommand=function(self)
 	self:sleep(timing.duration)
 end
@@ -323,13 +303,5 @@ t[#t+1] = Def.ActorFrame {
 		end
 	}
 }
-
-if IsSpooky() then
-	-- sound effect
-	t[#t+1] = LoadActor(THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/spooky.ogg"))..{
-		-- only play when the first choice (Gameplay) is chosen
-		TitleMenuToGameplayMessageCommand=function(self) self:play() end
-	}
-end
 
 return t

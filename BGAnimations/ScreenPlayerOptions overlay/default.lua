@@ -170,10 +170,10 @@ LoadActor("./OptionRowPreviews/JudgmentGraphic.lua", t)
 LoadActor("./OptionRowPreviews/ComboFont.lua", t)
 LoadActor("./OptionRowPreviews/HoldJudgment.lua", t)
 LoadActor("./OptionRowPreviews/MusicRate.lua", t)
+LoadActor("./OptionRowPreviews/Dancer.lua", t)
 
 -- some functionality needed in both PlayerOptions, PlayerOptions2, and PlayerOptions3
 t[#t+1] = LoadActor(THEME:GetPathB("ScreenPlayerOptions", "common"))
-
 
 for player in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local pn = ToEnumShortString(player)

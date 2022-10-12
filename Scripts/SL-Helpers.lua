@@ -564,24 +564,19 @@ end
 GetDancers = function()
 	local path = THEME:GetCurrentThemeDirectory().."Dancers/"
 	local dirs = FILEMAN:GetDirListing(path, true, false)
-	local dancers = {}
+	local dancers = { "None" }
 
 	for directory_name in ivalues(dirs) do
 		local files = FILEMAN:GetDirListing(path..directory_name.."/")
-		local has_png, has_ini = false, false
-
 		for filename in ivalues(files) do
-			if FilenameIsMultiFrameSprite(filename) and StripSpriteHints(filename)==directory_name then has_png = true end
-		end
-
-		if has_png then
-			table.insert(dancers, directory_name)
+			if FilenameIsMultiFrameSprite(filename) then
+				table.insert(dancers, filename)
+			end
 		end
 	end
-
+	
 	return dancers
 end
-
 
 -- -----------------------------------------------------------------------
 IsHumanPlayer = function(player)
