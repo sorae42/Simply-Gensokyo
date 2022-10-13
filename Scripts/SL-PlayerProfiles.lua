@@ -21,6 +21,7 @@ local permitted_profile_settings = {
 	ComboFont        = "string",
 	HoldJudgment     = "string",
 	BackgroundFilter = "string",
+	Dancer           = "string",
 
 	----------------------------------
 	-- "Advanced Modifiers"

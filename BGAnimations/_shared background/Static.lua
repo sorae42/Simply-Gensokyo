@@ -42,10 +42,6 @@ local af = Def.ActorFrame {
 	OnCommand=function(self)
 		self:diffusealpha(0):accelerate(0.3):diffusealpha(1)
 	end,
-	ScreenChangedMessageCommand=function(self)
-		local screen = SCREENMAN:GetTopScreen()
-		local style = ThemePrefs.Get("VisualStyle")
-	end,
 	Def.Sprite {
 		Name="Static",
 		Texture=THEME:GetPathG("", string.format("Backgrounds/%s.mp4", randomBg)),

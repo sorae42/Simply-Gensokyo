@@ -67,10 +67,5 @@ for row=0,2 do
 end
 
 -- -----------------------------------------------------------------------
--- https://www.youtube.com/watch?v=PKx_ihQ7mrY&lc=UgxXSurH391nm907OEh4AaABAg
-if IsSpooky() then
-	pad[#pad+1] = LoadActor("./ExtraSpooky.lua", {game, style, padNum, zoom, init_panel})
-end
--- -----------------------------------------------------------------------
 
 return pad

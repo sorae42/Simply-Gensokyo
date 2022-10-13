@@ -1,8 +1,3 @@
--- the best way to spread holiday cheer is singing loud for all to hear
-if HolidayCheer() then
-	return LoadActor( THEME:GetPathB("", "_shared background/Snow.lua") )
-end
-
 local style = ThemePrefs.Get("VisualStyle")
 
 -- use the "VisualStyle" ThemePrefs value to generate a proper filepath to the appropriate
@@ -26,7 +21,6 @@ af[#af+1] = Def.Quad{
 	end
 }
 
-af[#af+1] = LoadActor("./Normal.lua", file)
 af[#af+1] = LoadActor("./Static.lua", file)
 
 return af

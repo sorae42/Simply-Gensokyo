@@ -347,11 +347,8 @@ local NewSessionRequestProcessor = function(res, gsInfo)
 end
 
 local function DiffuseText(bmt)
-	local textColor = Color.White
+	local textColor = Color.Black
 	local shadowLength = 0
-	if not HolidayCheer() then
-		textColor = Color.Black
-	end
 	if ThemePrefs.Get("VisualStyle") == "Touhou" then
 		textColor = color(SL.Touhou.TextColor)
 		shadowLength = 0.4

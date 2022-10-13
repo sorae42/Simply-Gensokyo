@@ -426,29 +426,13 @@ GetStepsCredit = function(player)
 	return t
 end
 
--- -----------------------------------------------------------------------
--- the best way to spread holiday cheer is singing loud for all to hear
-
-HolidayCheer = function()
-	return (PREFSMAN:GetPreference("EasterEggs") and MonthOfYear()==11)
-end
-
 DarkUI = function()
 	-- During the process of switching games, THEME:GetCurThemeName() will temporarily return "_fallback"
 	-- because a [_fallback] section doesn't exist.  This should really be fixed in the _fallback theme,
 	-- but we can prevent Lua errors from being thrown in the meantime.
 	if THEME:GetCurThemeName() ~= PREFSMAN:GetPreference("Theme") then return false end
-
-	if HolidayCheer() then return true end
 	return false
 end
-
--- -----------------------------------------------------------------------
--- "The chills, I have them down my spine."
-IsSpooky = function()
-	return (PREFSMAN:GetPreference("EasterEggs") and MonthOfYear()==9 and ThemePrefs.Get("VisualStyle")=="Spooky")
-end
-
 -- -----------------------------------------------------------------------
 -- functions that handle custom judgment graphic detection/loading
 
