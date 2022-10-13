@@ -11,11 +11,6 @@ local assets = {
 	minisplode = THEME:GetPathG("", "_VisualStyles/"..style.."/GameplayIn minisplode")
 }
 
-if IsSpooky() then
-	assets.splode     = THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/Bats")
-	assets.minisplode = THEME:GetPathG("", "_VisualStyles/Spooky/ExtraSpooky/Bats")
-end
-
 if GAMESTATE:IsCourseMode() then
 	SongsInCourse = #GAMESTATE:GetCurrentCourse():GetCourseEntries()
 	text = ("%s 1 / %d"):format(THEME:GetString("Stage", "Stage"), SongsInCourse)

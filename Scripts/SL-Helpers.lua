@@ -563,15 +563,12 @@ end
 -- -----------------------------------------------------------------------
 GetDancers = function()
 	local path = THEME:GetCurrentThemeDirectory().."Dancers/"
-	local dirs = FILEMAN:GetDirListing(path, true, false)
+	local dirs = FILEMAN:GetDirListing(path)
 	local dancers = { "None" }
 
-	for directory_name in ivalues(dirs) do
-		local files = FILEMAN:GetDirListing(path..directory_name.."/")
-		for filename in ivalues(files) do
-			if FilenameIsMultiFrameSprite(filename) then
-				table.insert(dancers, filename)
-			end
+	for filename in ivalues(dirs) do
+		if FilenameIsMultiFrameSprite(filename) then
+			table.insert(dancers, filename)
 		end
 	end
 	

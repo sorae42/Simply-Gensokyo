@@ -21,9 +21,6 @@ local af = Def.ActorFrame{}
 af[#af+1] = LoadActor("./WhoIsCurrentlyWinning.lua")
 af[#af+1] = LoadActor("./FailOnHoldStart.lua")
 
--- temporary
-af[#af+1] = LoadActor("../../Dancers/NMReimu/dance.lua")
-
 for player in ivalues( GAMESTATE:GetHumanPlayers() ) do
 
 	local pn = ToEnumShortString(player)
