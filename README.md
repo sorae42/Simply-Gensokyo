@@ -8,6 +8,7 @@ Original SLSM5: https://github.com/Simply-Love/Simply-Love-SM5
 # Added
 - BGAs for title screen. (See attribution.txt for a list of links lead to the original artworks and resources.)
 - New Combo font: DF POPコン W12 (Windows Era TH Font)
+- Small character dancing during gameplay. (with the ability to add custom characters)
 
 # Modified/Removed
 - UI and English strings are modified. Other languages are remains untouched.
@@ -16,7 +17,6 @@ Original SLSM5: https://github.com/Simply-Love/Simply-Love-SM5
 - Removed rainbow mode.
 
 ## Work in Progress
-- Small character dancing during gameplay. (with the ability to add custom characters)
 - Touhou look-a-like title screen.
 - New logo for the theme.
 - PC-98 combo font.
