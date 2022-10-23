@@ -20,16 +20,8 @@ for i=1,7 do
 	local arrow = Def.ActorFrame{
 		InitCommand=function(self) self:x((i-4) * 50):diffusealpha(0) end,
 		OnCommand=function(self)
-			-- thonk
-			if ThemePrefs.Get("VisualStyle")=="Thonk" then
-				self:diffusealpha(1):rotationy(-90):sleep(i*0.1 + 0.2)
-				self:smooth(0.25):rotationy(0):sleep(0.8):bouncebegin(0.8):y(_screen.h)
-			-- everything else
-			else
-				self:sleep(i*0.1 + 0.2)
-				self:linear(0.75):diffusealpha(1):linear(0.75):diffusealpha(0)
-			end
-
+			self:sleep(i*0.1 + 0.2)
+			self:linear(0.75):diffusealpha(1):linear(0.75):diffusealpha(0)
 			self:queuecommand("Hide")
 		end,
 		HideCommand=function(self) self:visible(false) end,
